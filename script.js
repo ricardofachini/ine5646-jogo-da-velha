@@ -48,7 +48,7 @@ function resetBoard(){
         for (var j = 0; j<3; j++){
             document.getElementById("tile" + i + j).innerHTML="_";
             document.getElementById("tile" + i + j).style.color="black";
-            document.getElementById("tile" + i + j).style.backgroundColor="gray";
+            document.getElementById("tile" + i + j).style.backgroundColor="#24252A";
         }
     }
 }

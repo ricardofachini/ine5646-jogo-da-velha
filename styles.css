@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
     padding:0;
     margin:0;
@@ -61,4 +63,47 @@ td{
     justify-content: center;
 }
 
-body {background-color: gray;}
+body {
+    background-color: #24252A;
+    font-family: 'Roboto', 'Times New Roman', Times, serif;
+}
+
+header {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 99;
+
+    margin-bottom: 15px;
+
+}
+
+header h1 {
+    text-align: center;
+    color: rgb(87, 87, 241);
+}
+
+button {
+    background-color: rgb(87, 87, 241);
+    color: white;
+    border: none;
+    cursor:pointer;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 0px 10px 0px 10px;
+}
+
+#botoes {
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+    margin-left:25vw;
+    margin-right:25vw;
+}

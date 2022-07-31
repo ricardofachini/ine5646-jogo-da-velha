@@ -13,7 +13,10 @@
     </script>
 </head>
 <body>
-    <h1>Jogo-da-Velha</h1>
+    <header>
+        <h1>Jogo da velha</h1>
+        <img src="./tictactoe.png" alt="tic-tac-toe-logo" width="50px" height="50px">
+    </header>
     <div id="container-grid-jogo">
         <table id="grid">
             <tr>
@@ -35,25 +38,26 @@
     </div>
     <div id="players-scoreboard">
         <div id="p1-scorename" class="scoreandname_container">
-            <div class="score-playername">
+            <div id="p1-name" class="score-playername">
                 Teste de Nome Longo
             </div>
             <div id="p1-score-number" class="scoreboard">
-                00
+                0
             </div>
         </div>
         <div id="p2-scorename" class="scoreandname_container">
-            <div class="score-playername">
+            <div id="p2-name" class="score-playername">
                 Nmcurto
             </div>
             <div id="p2-score-number" class="scoreboard">
-                00
+                0
             </div>
         </div>
     </div>
     <div id="botoes">
         <button onclick="resetBoard()">Reiniciar Jogo</button>
         <button onclick="resetScores()">Reiniciar Placares</button>
+        <button onclick="asksForPlayersNames()">Renomear jogadores</button>
     </div>
 </body>
 </html>
