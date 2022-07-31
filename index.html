@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo-da-Velha</title>
+    <style type="text/css">
+        @import "styles.css";
+    </style>
+    <script src="script.js">
+        
+    </script>
+</head>
+<body>
+    <h1>Jogo-da-Velha</h1>
+    <div id="container-grid-jogo">
+        <table id="grid">
+            <tr>
+                <td id="tile00" onclick="marcarPosicao(0,0)">_</td>
+                <td id="tile01" onclick="marcarPosicao(0,1)">_</td>
+                <td id="tile02" onclick="marcarPosicao(0,2)">_</td>
+            </tr>
+            <tr>
+                <td id="tile10" onclick="marcarPosicao(1,0)">_</td>
+                <td id="tile11" onclick="marcarPosicao(1,1)">_</td>
+                <td id="tile12" onclick="marcarPosicao(1,2)">_</td>
+            </tr>
+            <tr>
+                <td id="tile20"onclick="marcarPosicao(2,0,id)">_</td>
+                <td id="tile21"onclick="marcarPosicao(2,1,id)">_</td>
+                <td id="tile22"onclick="marcarPosicao(2,2,id)">_</td>
+            </tr>
+        </table>
+    </div>
+    <div id="players-scoreboard">
+        <div id="p1-scorename" class="scoreandname_container">
+            <div class="score-playername">
+                Teste de Nome Longo
+            </div>
+            <div id="p1-score-number" class="scoreboard">
+                00
+            </div>
+        </div>
+        <div id="p2-scorename" class="scoreandname_container">
+            <div class="score-playername">
+                Nmcurto
+            </div>
+            <div id="p2-score-number" class="scoreboard">
+                00
+            </div>
+        </div>
+    </div>
+    <div id="botoes">
+        <button onclick="resetBoard()">Reiniciar Jogo</button>
+        <button onclick="resetScores()">Reiniciar Placares</button>
+    </div>
+</body>
+</html>
