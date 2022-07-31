@@ -27,7 +27,11 @@ function marcarPosicao(row,col){
             }
         } else if (!grid.includes(0)){ //GRID não tem espaços vazios= empatou
             active=false;
-            window.alert("EMPATE!");
+            let isContinue = window.confirm("EMPATE! Desejam recomeçar?");
+
+            if (isContinue) {
+                resetBoard();
+            }
         }
         //no fim alterna o jogador
         switch(currentPlayer){
@@ -52,8 +56,8 @@ function resetBoard(){
 function resetScores(){
     p1score=0;
     p2score=0;
-    document.getElementById("p1-score-number").innerHTML="00";
-    document.getElementById("p2-score-number").innerHTML="00";
+    document.getElementById("p1-score-number").innerHTML=p1score;
+    document.getElementById("p2-score-number").innerHTML=p2score;
     console.log("RESETEI SCORES")
 }
 //retorna se o jogador atual atingiu vitória
@@ -81,3 +85,26 @@ function testWinCondition(row,col){
     }
     return false;
 }
+
+function asksForPlayersNames() {
+    let firstPlayerLabel = document.getElementById("p1-name")
+    let secondPlayerLabel = document.getElementById("p2-name")
+
+    let firstPlayerName = window.prompt("Qual o nome do primeiro jogador?");
+    if (firstPlayerName.length > 0) {
+        firstPlayerLabel.textContent = firstPlayerName;
+    } else {
+        firstPlayerLabel.textContent = "Primeiro Jogador"
+    }
+    
+    let secondPlayerName = window.prompt("Qual o nome do segundo jogador?");
+    if (secondPlayerName.length > 0) {
+        secondPlayerLabel.textContent = secondPlayerName
+    } else {
+        secondPlayerLabel.textContent = "Segundo Jogador"
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function (event) {
+    asksForPlayersNames();
+}, false);
