@@ -6,6 +6,18 @@ var curSymbol="O"
 var p1score=0 //placares
 var p2score=0
 
+var playerOne = {
+    symbol: "O",
+    nome: "Primeiro Jogador",
+};
+
+var playerTwo = {
+    symbol: "X",
+    nome: "Segundo Jogador",
+};
+
+var players = [playerOne, playerTwo];
+
 function marcarPosicao(row,col){
     if (active){ //se for permitido jogar
         if (grid[3*row+col]!=0){ //Se tiver clicado num icone já preenchido, retorna
@@ -18,12 +30,13 @@ function marcarPosicao(row,col){
 
         document.getElementById("tile" + row + col).innerHTML=curSymbol; //preenche o display com a cor e simbolo corretos
         document.getElementById("tile" + row + col).style.color=curColor;
+        document.getElementById("tile" + row + col).style.borderColor=curColor;
 
         if (testWinCondition(row,col)){
             active=false;
             switch (currentPlayer){
-                case 1:++p1score;window.alert("P1 Ganhou!"); document.getElementById("p1-score-number").innerHTML=p1score.toString();break;
-                case 2:++p2score;window.alert("P2 Ganhou!");document.getElementById("p2-score-number").innerHTML=p2score.toString();
+                case 1:++p1score;window.alert(playerOne.nome + " Ganhou!"); document.getElementById("p1-score-number").innerHTML=p1score.toString();break;
+                case 2:++p2score;window.alert(playerTwo.nome + " Ganhou!"); document.getElementById("p2-score-number").innerHTML=p2score.toString();
             }
         } else if (!grid.includes(0)){ //GRID não tem espaços vazios= empatou
             active=false;
@@ -38,6 +51,7 @@ function marcarPosicao(row,col){
             case 1: currentPlayer=2;curSymbol="X";curColor="red";break;
             case 2:currentPlayer=1;curSymbol="O";curColor="blue";
         }
+        document.getElementById("playerOnTurnLabel").textContent = players[currentPlayer-1].nome;
     } 
 }
 //preenche o array da grid com 0s e limpa o display
@@ -46,9 +60,10 @@ function resetBoard(){
     active=true;
     for (var i = 0; i<3; i++){
         for (var j = 0; j<3; j++){
-            document.getElementById("tile" + i + j).innerHTML="_";
-            document.getElementById("tile" + i + j).style.color="black";
+            document.getElementById("tile" + i + j).innerHTML="";
+            document.getElementById("tile" + i + j).style.color="gray";
             document.getElementById("tile" + i + j).style.backgroundColor="#24252A";
+            document.getElementById("tile" + i + j).style.borderColor="gray"
         }
     }
 }
@@ -93,6 +108,7 @@ function asksForPlayersNames() {
     let firstPlayerName = window.prompt("Qual o nome do primeiro jogador?");
     if (firstPlayerName.length > 0) {
         firstPlayerLabel.textContent = firstPlayerName;
+        playerOne.nome = firstPlayerName;
     } else {
         firstPlayerLabel.textContent = "Primeiro Jogador"
     }
@@ -100,6 +116,7 @@ function asksForPlayersNames() {
     let secondPlayerName = window.prompt("Qual o nome do segundo jogador?");
     if (secondPlayerName.length > 0) {
         secondPlayerLabel.textContent = secondPlayerName
+        playerTwo.nome = secondPlayerName;
     } else {
         secondPlayerLabel.textContent = "Segundo Jogador"
     }

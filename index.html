@@ -20,26 +20,29 @@
     <div id="container-grid-jogo">
         <table id="grid">
             <tr>
-                <td id="tile00" onclick="marcarPosicao(0,0)">_</td>
-                <td id="tile01" onclick="marcarPosicao(0,1)">_</td>
-                <td id="tile02" onclick="marcarPosicao(0,2)">_</td>
+                <td id="tile00" onclick="marcarPosicao(0,0)"></td>
+                <td id="tile01" onclick="marcarPosicao(0,1)"></td>
+                <td id="tile02" onclick="marcarPosicao(0,2)"></td>
             </tr>
             <tr>
-                <td id="tile10" onclick="marcarPosicao(1,0)">_</td>
-                <td id="tile11" onclick="marcarPosicao(1,1)">_</td>
-                <td id="tile12" onclick="marcarPosicao(1,2)">_</td>
+                <td id="tile10" onclick="marcarPosicao(1,0)"></td>
+                <td id="tile11" onclick="marcarPosicao(1,1)"></td>
+                <td id="tile12" onclick="marcarPosicao(1,2)"></td>
             </tr>
             <tr>
-                <td id="tile20"onclick="marcarPosicao(2,0,id)">_</td>
-                <td id="tile21"onclick="marcarPosicao(2,1,id)">_</td>
-                <td id="tile22"onclick="marcarPosicao(2,2,id)">_</td>
+                <td id="tile20"onclick="marcarPosicao(2,0,id)"></td>
+                <td id="tile21"onclick="marcarPosicao(2,1,id)"></td>
+                <td id="tile22"onclick="marcarPosicao(2,2,id)"></td>
             </tr>
         </table>
+    </div>
+    <div class="centralize">
+        <h2>Vez de jogar: <span id="playerOnTurnLabel"></span></h2>
     </div>
     <div id="players-scoreboard">
         <div id="p1-scorename" class="scoreandname_container">
             <div id="p1-name" class="score-playername">
-                Teste de Nome Longo
+                Primeiro Jogador
             </div>
             <div id="p1-score-number" class="scoreboard">
                 0
@@ -47,7 +50,7 @@
         </div>
         <div id="p2-scorename" class="scoreandname_container">
             <div id="p2-name" class="score-playername">
-                Nmcurto
+                Segundo Jogador
             </div>
             <div id="p2-score-number" class="scoreboard">
                 0

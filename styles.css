@@ -5,20 +5,29 @@
     margin:0;
 }
 
+table {
+    table-layout: fixed;
+    width: 30px;
+}
+
+tr {
+    height: 180px;
+}
+
 td{
     width:7vw;
-    height:10vh;
-    border-style: solid;
-    border-width: 1svw;
-    margin-left:0;
-    margin-right: 0;
+    border-style:solid;
+    border-width: 0.7svw;
+    color: gray;
+    border-color: gray;
+    overflow: hidden;
     cursor:pointer;
 }
 
 #container-grid-jogo {
     display: flex;
     justify-content: center;
-    font-size:15vh;
+    font-size:12vh;
     text-align:center;
     margin-bottom: 5vh;
 }
@@ -31,7 +40,7 @@ td{
 }
 
 .scoreboard {
-    font-size:4vw;
+    font-size:3vw;
     display: flex;
     justify-content: center;
     border-radius:10px;
@@ -41,6 +50,7 @@ td{
     margin-left:1vw;
     margin-right: 1vw;
     border-radius:10px;
+    padding: 1vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,19 +79,12 @@ body {
 }
 
 header {
-
     width: 100%;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     z-index: 99;
-
     margin-bottom: 15px;
-
 }
 
 header h1 {
@@ -95,6 +98,7 @@ button {
     border: none;
     cursor:pointer;
     text-align: center;
+    font-weight: bolder;
     padding: 12px;
     border-radius: 8px;
     margin: 0px 10px 0px 10px;
@@ -106,4 +110,13 @@ button {
     justify-content: center;
     margin-left:25vw;
     margin-right:25vw;
+}
+
+.centralize {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    color: rgb(87, 87, 241);
 }
