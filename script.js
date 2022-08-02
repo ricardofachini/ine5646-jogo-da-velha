@@ -1,6 +1,6 @@
 var grid= [0,0,0,0,0,0,0,0,0]; //na grid, 0=vazio, 1= O e 2=X
 var currentPlayer=1 //1= O Azul/ 2= X Vermelho
-var curColor="blue";
+var curColor="aqua";
 var active=true;
 var curSymbol="O"
 var p1score=0 //placares
@@ -48,10 +48,10 @@ function marcarPosicao(row,col){
         }
         //no fim alterna o jogador
         switch(currentPlayer){
-            case 1: currentPlayer=2;curSymbol="X";curColor="red";break;
-            case 2:currentPlayer=1;curSymbol="O";curColor="blue";
+            case 1: currentPlayer=2;curSymbol="X";curColor="crimson";break;
+            case 2:currentPlayer=1;curSymbol="O";curColor="aqua";
         }
-        document.getElementById("playerOnTurnLabel").textContent = players[currentPlayer-1].nome;
+        document.getElementById("playerOnTurnLabel").textContent = getCurrentPlayerName();
     } 
 }
 //preenche o array da grid com 0s e limpa o display
@@ -122,6 +122,12 @@ function asksForPlayersNames() {
     }
 }
 
+function getCurrentPlayerName() {
+    return players[currentPlayer-1].nome;
+}
+
 document.addEventListener("DOMContentLoaded", function (event) {
     asksForPlayersNames();
+    let playerOnTurnLabel = document.getElementById("playerOnTurnLabel")
+    playerOnTurnLabel.textContent = getCurrentPlayerName();
 }, false);
