@@ -39,6 +39,10 @@ td{
     margin-right:25vw;
 }
 
+#playerOnTurnLabel {
+    color:aqua;
+}
+
 .scoreboard {
     font-size:3vw;
     display: flex;

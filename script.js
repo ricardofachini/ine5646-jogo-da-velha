@@ -5,6 +5,7 @@ var active=true;
 var curSymbol="O"
 var p1score=0 //placares
 var p2score=0
+var first_turn_player= 1
 
 var playerOne = {
     symbol: "O",
@@ -18,8 +19,8 @@ var playerTwo = {
 
 var players = [playerOne, playerTwo];
 
-function marcarPosicao(row,col){
-    if (active){ //se for permitido jogar
+function marcarPosicao(row,col){ //função operada sempre que clica-se num espaço
+    if (active){ //se for permitido jogar, caso contrário, não faz mais nada
         if (grid[3*row+col]!=0){ //Se tiver clicado num icone já preenchido, retorna
             return;
         }
@@ -32,18 +33,19 @@ function marcarPosicao(row,col){
         document.getElementById("tile" + row + col).style.color=curColor;
         document.getElementById("tile" + row + col).style.borderColor=curColor;
 
-        if (testWinCondition(row,col)){
-            active=false;
-            switch (currentPlayer){
+        if (testWinCondition(row,col)){ //chama método para testar se a jogada atual definiu vitória do jogador
+            active=false; //bloqueia jogar se for vitória (Resetar o jogo para voltar a jogar)
+            switch (currentPlayer){ //incrementa score dos jogadores, imprime vencedor e atualiza scoreboard
                 case 1:++p1score;window.alert(playerOne.nome + " Ganhou!"); document.getElementById("p1-score-number").innerHTML=p1score.toString();break;
                 case 2:++p2score;window.alert(playerTwo.nome + " Ganhou!"); document.getElementById("p2-score-number").innerHTML=p2score.toString();
             }
         } else if (!grid.includes(0)){ //GRID não tem espaços vazios= empatou
             active=false;
-            let isContinue = window.confirm("EMPATE! Desejam recomeçar?");
+            let isContinue = window.confirm("EMPATE! Desejam recomeçar?"); //Pergunta pro jogador se quer recomeçar imediatamente
 
             if (isContinue) {
                 resetBoard();
+                return; //método ResetBoard já aplica alternação do jogador atual, logo, retorna-se para não realizar o próximo passo (alternação do jogador)
             }
         }
         //no fim alterna o jogador
@@ -51,13 +53,21 @@ function marcarPosicao(row,col){
             case 1: currentPlayer=2;curSymbol="X";curColor="crimson";break;
             case 2:currentPlayer=1;curSymbol="O";curColor="aqua";
         }
-        document.getElementById("playerOnTurnLabel").textContent = getCurrentPlayerName();
+        document.getElementById("playerOnTurnLabel").textContent = getCurrentPlayerName(); //"Vez de Jogar:Fulano"
+        document.getElementById("playerOnTurnLabel").style.color = curColor;
     } 
 }
-//preenche o array da grid com 0s e limpa o display
+//preenche o array da grid com 0s e limpa o display, além de alternar o jogador de acordo com quem começou a ultima rodada
+//ex:se J1 começou a última rodada, J2 começa essa
 function resetBoard(){
     grid= [0,0,0,0,0,0,0,0,0];
     active=true;
+    switch(first_turn_player){
+            case 1: currentPlayer=2;first_turn_player=2;curSymbol="X";curColor="crimson";break;
+            case 2:currentPlayer=1;first_turn_player=1;curSymbol="O";curColor="aqua";
+    }
+    document.getElementById("playerOnTurnLabel").textContent = getCurrentPlayerName();
+    document.getElementById("playerOnTurnLabel").style.color = curColor;
     for (var i = 0; i<3; i++){
         for (var j = 0; j<3; j++){
             document.getElementById("tile" + i + j).innerHTML="";
@@ -101,7 +111,7 @@ function testWinCondition(row,col){
     return false;
 }
 
-function asksForPlayersNames() {
+function asksForPlayersNames() { //realiza prompts para pegar nomes dos jogadores
     let firstPlayerLabel = document.getElementById("p1-name")
     let secondPlayerLabel = document.getElementById("p2-name")
 
@@ -122,7 +132,7 @@ function asksForPlayersNames() {
     }
 }
 
-function getCurrentPlayerName() {
+function getCurrentPlayerName() { //pega nome do jogador atual
     return players[currentPlayer-1].nome;
 }
 
